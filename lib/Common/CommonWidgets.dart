@@ -12,14 +12,13 @@ import 'dart:html' as html;
 class DownloadButton extends StatelessWidget {
   final bool isLarge;
   const DownloadButton({super.key, this.isLarge = false});
-
   void _downloadApk() {
-    // Create a virtual anchor element
-     html.AnchorElement(href: 'app-release.apk`')
-      ..setAttribute('download', 'app-release.apk') // Specify the filename
-      ..click(); // Simulate a click on the element
+    html.AnchorElement(
+      href: 'https://www.dropbox.com/scl/fi/zoukb71s3rehsslar96gq/app-release.apk?rlkey=95m13ufeamjne8qof79b39z9n&dl=1',
+    )
+      ..setAttribute('download', 'app-release.apk')
+      ..click();
   }
-
 
   @override
   Widget build(BuildContext context) {
