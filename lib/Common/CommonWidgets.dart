@@ -307,50 +307,88 @@ class TestimonialCard extends StatelessWidget {
   }
 }
 
-class ReusableFAQTile extends StatelessWidget {
+
+
+class ReusableFAQTile extends StatefulWidget {
   final FAQItem item;
 
   const ReusableFAQTile({super.key, required this.item});
 
   @override
+  State<ReusableFAQTile> createState() => _ReusableFAQTileState();
+}
+
+
+
+class _ReusableFAQTileState extends State<ReusableFAQTile> {
+  bool isOpen = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      // Padding matches the visual "pill" thickness
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-      decoration: BoxDecoration(
-        color: item.backgroundColor,
-        borderRadius: BorderRadius.circular(100), // Perfect pill shape
-      ),
-      child: Row(
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isOpen = !isOpen;
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // The static circular icon
           Container(
-            padding: const EdgeInsets.all(8),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            decoration: BoxDecoration(
+              color: widget.item.backgroundColor,
+              borderRadius: BorderRadius.circular(100),
             ),
-            child: Icon(
-              Icons.keyboard_arrow_down,
-              size: 20,
-              // Logic to keep the orange icon on the orange card
-              color: item.backgroundColor == const Color(0xFFFF633B)
-                  ? const Color(0xFFFF633B)
-                  : Colors.grey[800],
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    isOpen
+                        ? Icons.keyboard_arrow_up
+                        : Icons.keyboard_arrow_down,
+                    size: 20,
+                    color: widget.item.backgroundColor ==
+                        const Color(0xFFFF633B)
+                        ? const Color(0xFFFF633B)
+                        : Colors.grey[800],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Text(
+                    widget.item.question,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Color(0xFF1A1F26),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(width: 16),
-          // The Question text
-          Expanded(
-            child: Text(
-              item.question,
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-                color: Color(0xFF1A1F26),
+
+          if (isOpen)
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 12,
+                left: 24,
+                right: 24,
+              ),
+              child: Text(
+                widget.item.answer,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[700],
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

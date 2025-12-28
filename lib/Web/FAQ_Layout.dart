@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../Common/CommonWidgets.dart';
 import '../Models/FAQItem.dart';
@@ -11,24 +12,28 @@ class FAQSection extends StatelessWidget {
 
   final List<FAQItem> faqList = [
     FAQItem(
-      question: "What do I get with Premium?",
-      answer: "Full access to all habit tracking features and advanced insights.",
-      backgroundColor: const Color(0xFFFF633B), // Bright Orange
+      question: "How does this app help me earn money?",
+      answer:
+      "You earn by buying coins at a lower price and selling them when their value increases. Prices change based on market demand and supply.",
+      backgroundColor: const Color(0xFFFF633B),
     ),
     FAQItem(
-      question: "What do I get with Premium?",
-      answer: "Personalized coaching and priority support from our experts.",
-      backgroundColor: const Color(0xFFFFD1D1), // Soft Pink
+      question: "Is my investment guaranteed?",
+      answer:
+      "No. Coin prices can go up or down. Profit is not guaranteed and losses are possible.",
+      backgroundColor: const Color(0xFFFFD1D1),
     ),
     FAQItem(
-      question: "What happens if I miss a day?",
-      answer: "Don't worry! You can log missed days or pause your streak.",
-      backgroundColor: const Color(0xFFE2CCDF), // Soft Purple
+      question: "When can I sell my coins?",
+      answer:
+      "You can sell your coins at any time when the market is active and buyers are available at the current price.",
+      backgroundColor: const Color(0xFFE2CCDF),
     ),
     FAQItem(
-      question: "What happens if I miss a day?",
-      answer: "Our smart reminders help you get back on track effortlessly.",
-      backgroundColor: const Color(0xFFDEF0FA), // Soft Blue
+      question: "How do I withdraw my earnings?",
+      answer:
+      "After selling your coins, your balance can be withdrawn using the payment methods provided in the app.",
+      backgroundColor: const Color(0xFFDEF0FA),
     ),
   ];
 
@@ -58,20 +63,33 @@ class FAQSection extends StatelessWidget {
           ),
           const SizedBox(height: 64),
           // Grid layout for the FAQ items
-          GridView.builder(
+
+          MasonryGridView.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 18,
+            crossAxisSpacing: 24,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Two columns
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 18,
-              mainAxisExtent: 100, // Keeps height consistent before expansion
-            ),
             itemCount: faqList.length,
             itemBuilder: (context, index) {
               return ReusableFAQTile(item: faqList[index]);
             },
-          ),
+          )
+          //
+          // GridView.builder(
+          //   shrinkWrap: true,
+          //   physics: const NeverScrollableScrollPhysics(),
+          //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //     crossAxisCount: 2, // Two columns
+          //     crossAxisSpacing: 24,
+          //     mainAxisSpacing: 18,
+          //     mainAxisExtent: 100, // Keeps height consistent before expansion
+          //   ),
+          //   itemCount: faqList.length,
+          //   itemBuilder: (context, index) {
+          //     return ReusableFAQTile(item: faqList[index]);
+          //   },
+          // ),
         ],
       ),
     );

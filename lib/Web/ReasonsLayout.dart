@@ -26,16 +26,16 @@ class WhyYouWillLoveItPage extends StatelessWidget {
                   color: Color(0xFF1C1C33),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  "Designed to help you stay on track, effortlessly.",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 8),
+              //   child: Text(
+              //     "Designed to help you stay on track, effortlessly.",
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.grey,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
 
@@ -43,27 +43,28 @@ class WhyYouWillLoveItPage extends StatelessWidget {
 
           // Section 2: Cards
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               ReasonCard(
                 icon: Icons.notifications_none_rounded,
                 title: 'Reason 1',
                 description:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'Track live coin prices and market movements so you can make informed buy and sell decisions.',
+
               ),
               SizedBox(width: 24),
               ReasonCard(
                 icon: Icons.trending_up_rounded,
                 title: 'Reason 2',
                 description:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'Your funds and transactions are protected using secure systems and verified payment methods.',
               ),
               SizedBox(width: 24),
               ReasonCard(
                 icon: Icons.local_fire_department_outlined,
                 title: 'Reason 3',
                 description:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                'Buy coins instantly and sell them anytime when prices rise, with clear balance updates.',
               ),
             ],
           ),

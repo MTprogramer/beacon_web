@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.3.3
+  flutter_staggered_grid_view: ^0.7.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -73,6 +74,7 @@ flutter:
     - assets/priya.png
     - assets/logo.png
     - assets/arrow.png
+    - assets/mobile_header_bg.png
 #     - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
